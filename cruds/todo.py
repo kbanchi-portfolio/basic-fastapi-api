@@ -20,8 +20,8 @@ def create_todo(db: Session, todo_create: todo_schema.TodoCreate) -> todo_model.
 def get_todos(db: Session) -> List[Tuple[int, str]]:
     result: Result = db.execute(
         select(
-            todo_model.Todo
-        )
+            todo_model.Todo.id, todo_model.Todo.description, 
+        ).where()
     )
     return result.all()
 
